@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const px2rem = require('postcss-px2rem');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -196,9 +197,10 @@ module.exports = {
                       ],
                       flexbox: 'no-2009',
                     }),
+                    px2rem({remUnit: 75})
                   ],
                 },
-              },
+              }
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -211,12 +213,16 @@ module.exports = {
             // its runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /.scss$/],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+          {
+            test: /\.scss$/,
+            loaders: ['style-loader', 'css-loader', 'sass-loader']
+          }
         ],
       },
       // ** STOP ** Are you adding a new loader?

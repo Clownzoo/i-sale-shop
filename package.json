@@ -28,6 +28,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "lib-flexible": "^0.3.2",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
     "object-assign": "4.1.1",
@@ -99,6 +100,10 @@
   },
   "devDependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "react-router-dom": "^4.3.1"
+    "node-sass": "^4.9.2",
+    "postcss-px2rem": "^0.3.0",
+    "px2rem-loader": "^0.1.9",
+    "react-router-dom": "^4.3.1",
+    "sass-loader": "^7.1.0"
   }
 }
